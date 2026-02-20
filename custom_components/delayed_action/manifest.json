@@ -6,6 +6,7 @@
     "dependencies": [],
     "codeowners": ["@bhuebschen"],
     "config_flow": true,
-    "version": "0.1.5",
-    "iot_class": "local_polling"
+    "version": "0.1.6",
+    "integration_type": "service",
+    "iot_class": "calculated"
 }

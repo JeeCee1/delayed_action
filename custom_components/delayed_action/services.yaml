@@ -1,18 +1,65 @@
 execute:
-  description: "Schedule an action with a delay or at a specific time"
   fields:
     entity_id:
-      description: "The entity ID of the device to control"
-      example: "switch.any_switch"
+      required: true
+      selector:
+        entity: {}
     action:
-      description: "The action to perform (e.g., turn_on, turn_off, set_brightness, set_temperature)"
-      example: "turn_on"
+      required: true
+      selector:
+        select:
+          options:
+            - turn_on
+            - turn_off
+            - toggle
+            - open_cover
+            - close_cover
+            - stop_cover
+            - media_play
+            - media_pause
+            - media_stop
+            - media_next_track
+            - media_previous_track
+            - volume_mute
+            - volume_up
+            - volume_down
+            - lock
+            - unlock
+            - start
+            - stop
+            - return_to_base
+            - dock
+            - start_mowing
+            - select_option
+            - trigger
     delay:
-      description: "The delay in seconds before performing the action"
-      example: 10
+      selector:
+        number:
+          min: 0
+          max: 86400
+          unit_of_measurement: seconds
     datetime:
-      description: "The specific date and time to perform the action (ISO 8601 format)"
-      example: "2024-06-23T18:00:00"
-    additional_data:
-      description: "Any additional data to be passed to the service call (optional)"
-      example: {"attribute": "value"}
+      selector:
+        datetime: {}
+    data:
+      selector:
+        object: {}
+
+cancel:
+  fields:
+    entity_id:
+      required: true
+      selector:
+        entity: {}
+    task_id:
+      selector:
+        text: {}
+
+list:
+  fields:
+    entity_id:
+      selector:
+        entity: {}
+
+get_config:
+  fields: {}
